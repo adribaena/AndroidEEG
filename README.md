@@ -1,0 +1,2 @@
+# AndroidEEG
+For final degree
