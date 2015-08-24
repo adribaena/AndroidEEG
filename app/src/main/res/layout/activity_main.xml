@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dip">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dip"
+            android:layout_weight="1"
+            android:enabled="false" />
+
+        <Button
+            android:id="@+id/sign_out_button"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="@string/sign_out_button_name" />
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/myapplication"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <!--<TextView-->
+        <!--android:id="@+id/sign_in_status"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="20dp"-->
+        <!--android:text="@string/status_signed_out" />-->
+
+        <LinearLayout
+            android:id="@+id/layoutEstado"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/txtEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20px"
+                android:layout_marginTop="10px"
+                android:layout_weight="1"
+                android:background="#eeeeee"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="Estado del dispositivo"
+                android:textColor="#F00"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnConectar"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:layout_alignLeft="@+id/txtConcentracion"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="25px"
+                android:layout_weight="1"
+                android:onClick="Comenzar"
+                android:text="Recoger datos" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layouttratamiento"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutparar"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/botonborrar"
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:layout_below="@+id/botonparar"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:onClick="borrarDatos"
+                android:text="Borrar datos" />
+
+            <Button
+                android:id="@+id/botonenviar"
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/botonparar"
+
+                android:layout_weight="1"
+                android:enabled="false"
+                android:onClick="enviarAlServidor"
+                android:text="Enviar al servidor" />
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutEstado"
+            android:id="@+id/relativeLayout2">
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textconc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_below="@+id/txtEstado"
+
+
+                    android:layout_toLeftOf="@+id/txtConcentracion"
+
+                    android:layout_toStartOf="@+id/txtConcentracion"
+                    android:background="#ffaa2016"
+                    android:text="   Maximo de Atencion : "
+                    android:textColor="#ffb0fff0" />
+
+
+                <TextView
+                    android:id="@+id/txtConcentracion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/barCon"
+
+                    android:layout_toEndOf="@+id/TextView01"
+                    android:layout_toRightOf="@+id/TextView01"
+                    android:background="#ff030202"
+                    android:text="00"
+                    android:textColor="#ffffffff" />
+
+                <TextView
+                    android:id="@+id/perBarCon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/barMed"
+                    android:layout_alignStart="@+id/barMed"
+                    android:layout_alignTop="@+id/txtConcentracion"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:text="00"
+                    android:textColor="#F00" />
+
+                <ProgressBar
+                    android:id="@+id/barCon"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="100dp"
+                    android:layout_height="fill_parent" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout3"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/linearLayout3"
+                    android:background="#ffaa2016"
+                    android:text="   Maximo de Relajación : "
+                    android:textColor="#ffb0fff0" />
+
+                <TextView
+                    android:id="@+id/txtMeditacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ff030202"
+                    android:text="00"
+                    android:textColor="#ffffffff" />
+
+                <TextView
+                    android:id="@+id/perBarMed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/barCon"
+                    android:layout_alignStart="@+id/barCon"
+                    android:layout_alignTop="@+id/barMed"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:text="00"
+                    android:textColor="#F00" />
+
+                <ProgressBar
+                    android:id="@+id/barMed"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="100dp"
+                    android:layout_height="fill_parent"
+                    android:layout_alignLeft="@+id/perBarMed"
+                    android:layout_alignStart="@+id/perBarMed"
+                    android:layout_alignTop="@+id/TextView01"
+                    android:layout_gravity="center" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/linearLayout6"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textTime"
+                    android:layout_width="160dp"
+                    android:layout_height="fill_parent"
+                    android:layout_alignEnd="@+id/textconc"
+                    android:layout_alignRight="@+id/textconc"
+                    android:layout_below="@+id/TextView02"
+                    android:background="#ffaa2016"
+                    android:text="   Tiempo de la prueba : "
+                    android:textColor="#ffb0fff0" />
+
+                <TextView
+                    android:id="@+id/txtTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/txtMeditacion"
+                    android:layout_alignStart="@+id/txtMeditacion"
+                    android:layout_alignTop="@+id/textTime"
+                    android:background="#ff030202"
+                    android:text="00"
+                    android:textColor="#ffffffff" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout6"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/linearLayout4"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/numPest"
+                    android:layout_width="161dp"
+                    android:layout_height="fill_parent"
+                    android:layout_alignEnd="@+id/textconc"
+                    android:layout_alignRight="@+id/textconc"
+                    android:layout_below="@+id/TextView02"
+                    android:background="#ffaa2016"
+                    android:text=" Numero de pestañeos : "
+                    android:textColor="#ffb0fff0" />
+
+                <TextView
+                    android:id="@+id/txtPestaneos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/TextView02"
+                    android:layout_alignBottom="@+id/TextView02"
+                    android:layout_alignLeft="@+id/txtMeditacion"
+                    android:background="#ff030202"
+                    android:text="0"
+                    android:textColor="#ffffffff" />
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutparar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeLayout2"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/botonparar"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:enabled="false"
+                android:onClick="parar"
+                android:text="Parar" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

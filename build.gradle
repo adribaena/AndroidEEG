@@ -1,0 +1,17 @@
+// intentionally empty - the content is inside the gradle files in the subdirectories
+buildscript {
+    repositories {
+        jcenter()
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.google.gms:google-services:1.3.0-beta1'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
